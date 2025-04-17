@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://yqs1tliddu1y"]
+
+[ext_resource type="PackedScene" uid="uid://dmpoh06lfxv5x" path="res://models/sky_ground3.glb" id="1_kr18r"]
+
+[node name="sky_ground3" instance=ExtResource("1_kr18r")]

@@ -1,0 +1,75 @@
+[gd_scene load_steps=12 format=3 uid="uid://b1gtmiwf7bxk3"]
+
+[ext_resource type="Script" uid="uid://pqj0tul05m4" path="res://main.gd" id="1_4c57u"]
+[ext_resource type="PackedScene" uid="uid://br8rxfdkfokyx" path="res://models/grass.glb" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://dp0trq8n7dyvv" path="res://player.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://doeynakvugmse" path="res://models/ending.glb" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://hjpotgomj3qw" path="res://sky_ground_bright.tscn" id="5_7mycd"]
+[ext_resource type="Script" uid="uid://drkfdohgcxe6k" path="res://sky_ground.gd" id="6_272bh"]
+[ext_resource type="PackedScene" uid="uid://bu6y08bxqw53r" path="res://models/trees.glb" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://dva1nv8akpytv" path="res://models/GLINTER.glb" id="8_kek77"]
+[ext_resource type="PackedScene" uid="uid://cgv1ly3tf6x5a" path="res://models/cloud_bright.glb" id="9_4c57u"]
+[ext_resource type="PackedScene" uid="uid://c7txhkyp3cew6" path="res://audio_stream_player.tscn" id="10_4c57u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1bvp3"]
+size = Vector3(35.0301, 0.451172, 12.4344)
+
+[node name="Main" type="Node"]
+script = ExtResource("1_4c57u")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(0.999995, 0.00271728, -0.00148787, -0.00270848, 0.999979, 0.00588596, 0.00150384, -0.0058819, 0.999982, 0, 0, 0)
+metadata/_edit_group_ = true
+
+[node name="grass" parent="StaticBody3D" instance=ExtResource("1_ig7tw")]
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="StaticBody3D"]
+transform = Transform3D(1.215, 0, 0, 0, -5.31093e-08, -1.215, 0, 1.215, -5.31093e-08, -0.0929108, -1.00599, 0.109497)
+polygon = PackedVector2Array(-0.598358, 12.8968, -12.9715, 11.5805, -21.9224, 9.00055, -27.7667, 5.31492, -29.8201, 2.89293, -35.5592, 2.47172, -35.8224, -3.10938, -34.1902, -5.2681, -31.9789, -3.9518, -29.7148, -3.37264, -26.6084, -6.53174, -21.975, -8.84843, -17.3943, -10.428, -12.603, -11.6916, -6.70597, -12.4814, -0.756315, -12.5867, 5.08804, -12.3761, 10.6165, -11.7969, 16.4608, -10.5333, 22.5158, -8.69047, 26.6226, -6.26849, 29.7291, -3.16203, 31.1507, -1.37186, 35.6788, -3.47794, 36.5738, -0.00291818, 36.0473, 2.73498, 35.3629, 3.94597, 32.8882, 3.15619, 30.4136, 2.47172, 28.3602, 4.84105, 25.359, 7.21039, 20.0938, 9.68502, 13.1438, 11.6331, 6.66759, 12.5809)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.0250953, 0.999685, 0, -0.999685, -0.0250953, 0, 0, 0)
+visible = false
+
+[node name="Player" parent="." instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50641, 0)
+
+[node name="Ending" type="StaticBody3D" parent="."]
+
+[node name="ending" parent="Ending" instance=ExtResource("4_1bvp3")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ending"]
+transform = Transform3D(0.991374, -0.131063, 0, 0.131063, 0.991374, 0, 0, 0, 1, -56.6109, -2.55868, -0.0218658)
+shape = SubResource("BoxShape3D_1bvp3")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Ending"]
+transform = Transform3D(0.999599, 0.0283009, 0.00121602, -0.00100191, -0.00757856, 0.999971, 0.0283093, -0.999571, -0.00754717, -58.0483, -2.55882, -6.10964)
+shape = SubResource("BoxShape3D_1bvp3")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Ending"]
+transform = Transform3D(0.999599, 0.0283009, 0.00121602, -0.00100191, -0.00757856, 0.999971, 0.0283093, -0.999571, -0.00754717, -58.0483, -2.55882, 5.46384)
+shape = SubResource("BoxShape3D_1bvp3")
+
+[node name="SkyGround" parent="." instance=ExtResource("5_7mycd")]
+script = ExtResource("6_272bh")
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 15, 0)
+light_angular_distance = 50.25
+
+[node name="Trees" type="StaticBody3D" parent="."]
+
+[node name="trees" parent="Trees" instance=ExtResource("7_272bh")]
+
+[node name="Glinter" type="StaticBody3D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="GLINTER" parent="Glinter" instance=ExtResource("8_kek77")]
+transform = Transform3D(0.0348995, 0, -0.999391, 0, 1, 0, 0.999391, 0, 0.0348995, -75.675, -11.31, 15.35)
+
+[node name="Cloud" type="StaticBody3D" parent="."]
+
+[node name="CloudBright" parent="Cloud" instance=ExtResource("9_4c57u")]
+
+[node name="Background" parent="." instance=ExtResource("10_4c57u")]
+stream_paused = false

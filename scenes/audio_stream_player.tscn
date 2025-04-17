@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7txhkyp3cew6"]
+
+[ext_resource type="AudioStream" uid="uid://bfqtr5vx3ck7r" path="res://Audio/backgorund noise.mp3" id="1_g84o6"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_g84o6")
+volume_db = -11.475
+pitch_scale = 0.82
+autoplay = true

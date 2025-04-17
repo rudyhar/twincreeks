@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsrkv6280wn1"]
+
+[ext_resource type="PackedScene" uid="uid://ct4pe74frdl1n" path="res://models/BIRD.glb" id="1_sg5wf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l04cu"]
+
+[node name="BIRD" instance=ExtResource("1_sg5wf")]
+
+[node name="PolyMesh3D1_7" parent="Empty" index="6"]
+surface_material_override/0 = SubResource("ShaderMaterial_l04cu")

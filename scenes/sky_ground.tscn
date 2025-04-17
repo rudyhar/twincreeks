@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx5tyceoenyaa"]
+
+[ext_resource type="PackedScene" uid="uid://jyb8mwfl0og1" path="res://assets/sky_ground.glb" id="1_x8cwv"]
+[ext_resource type="Script" uid="uid://drkfdohgcxe6k" path="res://scripts/sky_ground.gd" id="2_u0nx0"]
+
+[node name="sky_ground" instance=ExtResource("1_x8cwv")]
+script = ExtResource("2_u0nx0")
