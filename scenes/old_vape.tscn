@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cad1ogci4ojh7"]
+
+[ext_resource type="PackedScene" uid="uid://dievmq16c6wpa" path="res://models/vape_solo.glb" id="1_ihg13"]
+
+[node name="vape_solo" instance=ExtResource("1_ihg13")]
+
+[node name="vape" parent="." index="0"]
+transform = Transform3D(-0.204984, 0.889487, -0.0509392, 0.0247585, 0.366779, 0.289683, 0.223775, 0.774213, -0.0787122, 3.47614, 0.203344, 0.247248)

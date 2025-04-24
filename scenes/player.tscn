@@ -1,13 +1,14 @@
-[gd_scene load_steps=29 format=3 uid="uid://dp0trq8n7dyvv"]
+[gd_scene load_steps=30 format=3 uid="uid://dp0trq8n7dyvv"]
 
-[ext_resource type="Script" uid="uid://5leyrnxaamru" path="res://scripts/player.gd" id="1_onrkg"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_onrkg"]
 [ext_resource type="FontFile" uid="uid://cl03o0auj3hbh" path="res://fonts/Charm-Regular.ttf" id="3_i3pqv"]
-[ext_resource type="Shader" uid="uid://j51ypmo00lim" path="res://scenes/crosshair.gdshader" id="4_2hs0m"]
+[ext_resource type="PackedScene" uid="uid://desi2caktwo7j" path="res://scenes/vape.tscn" id="3_teb0c"]
+[ext_resource type="Shader" path="res://scenes/crosshair.gdshader" id="4_2hs0m"]
 [ext_resource type="PackedScene" uid="uid://bwlanvf5hw6tl" path="res://scenes/gun.tscn" id="4_hqtel"]
 [ext_resource type="Texture2D" uid="uid://4e7dxetphwec" path="res://art/scope.png" id="4_sweqy"]
 [ext_resource type="AudioStream" uid="uid://cl4dp228tvy3k" path="res://Audio/death_sound.mp3" id="6_2hs0m"]
-[ext_resource type="Shader" uid="uid://b5afrq1b37ct3" path="res://scenes/crosshair_warp.gdshader" id="7_1jxqw"]
-[ext_resource type="Shader" uid="uid://befqrfnqkjgxv" path="res://scenes/death.gdshader" id="8_dw050"]
+[ext_resource type="Shader" path="res://scenes/crosshair_warp.gdshader" id="7_1jxqw"]
+[ext_resource type="Shader" path="res://scenes/death.gdshader" id="8_dw050"]
 [ext_resource type="Texture2D" uid="uid://ds1ncqglhpqij" path="res://assets/Screenshot 2025-04-02 002843.png" id="9_b26j0"]
 [ext_resource type="AudioStream" uid="uid://bbp4l8k23m6tq" path="res://Audio/death_distort.mp3" id="10_y4r1p"]
 
@@ -22,11 +23,11 @@ default_font = ExtResource("3_i3pqv")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1jxqw"]
 shader = ExtResource("4_2hs0m")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_sweqy")
 shader_parameter/glitter_color = Color(1, 0, 0, 1)
 shader_parameter/glitter_size = 1.0
 shader_parameter/glitter_spark_frequency = 5.0
 shader_parameter/glitter_highlight_intensity = 0.55
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_sweqy")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ur7pv"]
 radius = 0.727
@@ -69,9 +70,6 @@ shader_parameter/fireball_scale_y = 2.405
 shader_parameter/glow_scale_y = 7.88
 shader_parameter/glow_strength = -0.265
 shader_parameter/glow_intensity = 0.935
-shader_parameter/noise = SubResource("NoiseTexture2D_ivps1")
-shader_parameter/noise2 = SubResource("NoiseTexture2D_urp6f")
-shader_parameter/colo_curve = SubResource("NoiseTexture2D_b26j0")
 shader_parameter/pixel_size = 1
 shader_parameter/glow_position = Vector2(0.5, 1.33)
 shader_parameter/glow_size = Vector2(2.59, -0.69)
@@ -79,6 +77,9 @@ shader_parameter/pulsate = true
 shader_parameter/pulsation_speed = -1.21
 shader_parameter/glow_intensity_start = -1.915
 shader_parameter/glow_intensity_stop = 1.0
+shader_parameter/noise = SubResource("NoiseTexture2D_ivps1")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_urp6f")
+shader_parameter/colo_curve = SubResource("NoiseTexture2D_b26j0")
 
 [sub_resource type="Animation" id="Animation_y4r1p"]
 length = 0.001
@@ -136,8 +137,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_d2wvv"]
 _data = {
-&"RESET": SubResource("Animation_y4r1p"),
-&"death_screen": SubResource("Animation_ur7pv")
+"RESET": SubResource("Animation_y4r1p"),
+"death_screen": SubResource("Animation_ur7pv")
 }
 
 [node name="Player" type="CharacterBody3D"]
@@ -163,6 +164,10 @@ shape = SubResource("CapsuleShape3D_sh265")
 
 [node name="Gun" parent="RotationHelper" instance=ExtResource("4_hqtel")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22, -0.145, -0.595)
+visible = false
+
+[node name="Vape" parent="RotationHelper" instance=ExtResource("3_teb0c")]
+transform = Transform3D(0.0114978, -0.00503011, -0.0155724, -0.00271714, 0.0181808, -0.00787884, 0.0161375, 0.00664508, 0.00976857, 0.042, -0.042, -0.194)
 
 [node name="Hud" type="Node2D" parent="."]
 
@@ -213,7 +218,7 @@ texture = ExtResource("9_b26j0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Death/Sprite2D"]
 libraries = {
-&"": SubResource("AnimationLibrary_d2wvv")
+"": SubResource("AnimationLibrary_d2wvv")
 }
 
 [node name="DeathDistortSound" type="AudioStreamPlayer" parent="Death"]

@@ -24,6 +24,8 @@ func _ready():
 	camera = $RotationHelper/Camera
 	rotation_helper = $RotationHelper
 	get_node("RotationHelper/Gun/AnimationPlayer").speed_scale = 3.0
+	get_node("RotationHelper/Vape/Vape/AnimationPlayer").play("vape trick 1")
+
 
 
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -137,10 +139,26 @@ func _input(event):
 		rotation_helper.rotation_degrees = camera_rot
 		
 		
+	if event is InputEventMouseButton:
+		if !event.is_pressed():
+			print("JOE")
+			get_node("RotationHelper/Vape/Vape/AnimationPlayer").play("Holding")
+			
+			
+	
+
+			
+			
+		
+		
+		
 func shoot():
 	get_node("RotationHelper/Gun/AnimationPlayer").stop()
 	get_node("RotationHelper/Gun/AnimationPlayer").play("Shoot")
 	get_node("RotationHelper/Gun/GunshotSound").play()
+	
+	get_node("RotationHelper/Vape/Vape/AnimationPlayer").play("smoke")
+
 	
 	var space = get_world_3d().direct_space_state
 	var query = PhysicsRayQueryParameters3D.create($RotationHelper/Camera.global_position,

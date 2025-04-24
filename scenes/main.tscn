@@ -1,10 +1,10 @@
 [gd_scene load_steps=14 format=3 uid="uid://b1gtmiwf7bxk3"]
 
-[ext_resource type="Script" uid="uid://pqj0tul05m4" path="res://scripts/main.gd" id="1_4c57u"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_4c57u"]
 [ext_resource type="PackedScene" uid="uid://br8rxfdkfokyx" path="res://models/grass.glb" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://dp0trq8n7dyvv" path="res://scenes/player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://doeynakvugmse" path="res://models/ending.glb" id="4_1bvp3"]
-[ext_resource type="Script" uid="uid://drkfdohgcxe6k" path="res://scripts/sky_ground.gd" id="6_272bh"]
+[ext_resource type="Script" path="res://scripts/sky_ground.gd" id="6_272bh"]
 [ext_resource type="PackedScene" uid="uid://bu6y08bxqw53r" path="res://models/trees.glb" id="7_272bh"]
 [ext_resource type="PackedScene" uid="uid://dva1nv8akpytv" path="res://models/GLINTER.glb" id="8_kek77"]
 [ext_resource type="PackedScene" uid="uid://cgv1ly3tf6x5a" path="res://models/cloud_bright.glb" id="9_4c57u"]
